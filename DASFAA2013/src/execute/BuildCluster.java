@@ -19,7 +19,8 @@ public class BuildCluster {
 	
 	private ArrayList<DataPoint> dpoints;
 	private String poiFilePath = "";
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	
 	public BuildCluster(){
