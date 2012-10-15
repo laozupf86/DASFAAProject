@@ -60,7 +60,7 @@ public class RewritePoi {
 		try {
 			outfile = new FileWriter(clusterFilePath + "points");
 			BufferedWriter bw = new BufferedWriter(outfile);
-			for (int i = 0; i < lines.size(); i++){
+			for (int i = 0; i < lines.size(); i = i + 10){
 				bw.write(i + "," + lines.get(i));
 	        	bw.newLine();
 			}
