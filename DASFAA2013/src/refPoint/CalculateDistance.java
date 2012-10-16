@@ -11,7 +11,8 @@ import java.util.ArrayList;
 public class CalculateDistance {
 	
 	
-	private static String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private static String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private static String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	
 	public CalculateDistance(){
