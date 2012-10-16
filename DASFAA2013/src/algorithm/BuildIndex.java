@@ -1,55 +1,33 @@
 package algorithm;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import refPoint.Point;;
+import refPoint.Point;
 
-public class FindNearestPoint {
+public class BuildIndex {
 	
-	//double[] refPoint = {25,50,100,250,}
+	private HashMap<String, HashMap<String, Double>> index;
 	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
-	private ArrayList<Point> query;
-	private int refPointNum;
-	private ArrayList<Point> refPoint;
 	
-	public FindNearestPoint(ArrayList<Point> query, int refPointNum){
-		this.query = query;
-		this.refPointNum = refPointNum;
-		this.refPoint = new ArrayList<Point>();
-		readFile("refPoints\\refPoint" + refPointNum);
-	}
-	
-	public ArrayList<Point> getPoint(){
-		ArrayList<Point> result = new ArrayList<Point>();
-		for (Point q : query){
-			double minDistance = Double.MAX_VALUE;
-			Point r = null;
-			for (Point p : refPoint){
-				double tempDistance = getDistance(q.p, p.p);
-				if (tempDistance < minDistance){
-					minDistance = tempDistance;
-					r = p;
-				}
-			}
-			result.add(r);
-		}
-		
-		
-		
-		return result;
+	public BuildIndex(ArrayList<Point> refPoint, int model){
+		this.index = new HashMap<String, HashMap<String, Double>>();
+		 
 	}
 	
 	
-	public void readFile(String fileName){
+	private void buildForGrid(ArrayList<Point> refPoint, int num){
+		//File flist = new File(clusterFilePath + "grid\\");
+		//String[] list = flist.list();
 		BufferedReader reader = null;
-		
 		String lineWord;
+		
 		try {
-			reader = new BufferedReader(new FileReader(clusterFilePath + fileName));
+			reader = new BufferedReader(new FileReader(clusterFilePath + "griddistance//refPoint" + num));
 			while ((lineWord = reader.readLine()) != null){
 				 String[] tr = lineWord.split(",");
 				 double[] temp = new double[2];
@@ -66,6 +44,7 @@ public class FindNearestPoint {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
 	
@@ -78,10 +57,6 @@ public class FindNearestPoint {
 		return Math.pow(distance, 0.5);
 		
 	}
-	
-	
-	
-	
 	
 
 }
