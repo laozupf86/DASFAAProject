@@ -14,6 +14,9 @@ public class RewritePoi {
 	/**
 	 * @param args
 	 */
+	
+	private static String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	
 	public static void main(String[] args) {
 		
 		
@@ -22,7 +25,7 @@ public class RewritePoi {
 		double minX = 180;
 		double minY = 180;
 		ArrayList<String> lines = new ArrayList<String>();
-		String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+		//String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 		BufferedReader reader = null;
 		File file = new File("E:\\data.csv");
 		String lineWord;
