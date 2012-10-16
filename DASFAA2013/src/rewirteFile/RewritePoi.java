@@ -58,9 +58,9 @@ public class RewritePoi {
 		
 		FileWriter outfile;
 		try {
-			outfile = new FileWriter(clusterFilePath + "points");
+			outfile = new FileWriter(clusterFilePath + "points-s");
 			BufferedWriter bw = new BufferedWriter(outfile);
-			for (int i = 0; i < lines.size(); i++){
+			for (int i = 0; i < lines.size(); i = i + 200){
 				bw.write(i + "," + lines.get(i));
 	        	bw.newLine();
 			}
