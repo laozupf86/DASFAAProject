@@ -53,10 +53,34 @@ public class BuildIndex {
 		
 	}
 	
+	
+	private void buildForHCL(ArrayList<Point> refPoint, int num){
+		BufferedReader reader = null;
+		String lineWord;
+		HashMap<String, Integer> rp = new HashMap<String, Integer>();
+		for (Point tp : refPoint){
+			rp.put(tp.id, 1);
+		}
+		try {
+			reader = new BufferedReader(new FileReader(clusterFilePath + "hcldistance//refPoint" + num));
+			while ((lineWord = reader.readLine()) != null){
+				 String[] tr = lineWord.split(",");
+				 if (rp.containsKey(tr[0])){
+					 index.put(tr[0] + "," + tr[1], Double.parseDouble(tr[2]));
+				 }
+				 
+			}
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public Double getDistance(String key){
 		if (index.containsKey(key)){
 			return index.get(key);
 		}else{
+			System.out.println("invailed key");
 			return -1.0;
 		}
 	}

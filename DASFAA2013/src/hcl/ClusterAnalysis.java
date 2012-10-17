@@ -5,6 +5,8 @@ import java.util.List;
 
 public class ClusterAnalysis {
 	
+	private int c = 0;
+	
 	public List<Cluster> startAnalysis(List<DataPoint> dataPoints,int ClusterNum){
 	      List<Cluster> finalClusters=new ArrayList<Cluster>();
 	     
@@ -63,6 +65,8 @@ public class ClusterAnalysis {
 	            clusterA.setDataPoints(dpA);
 
 	            // List<Cluster> clustersÖÐÒÆ³ýcluster[mergeIndexB]
+	            c++;
+	            System.out.println("cluster id " + mergeIndexB + " is merged, count is " + c);
 	            clusters.remove(mergeIndexB);
 	        }
 

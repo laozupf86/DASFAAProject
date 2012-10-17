@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class BuildTree {
 	
-	private String filePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String filePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\clusters\\";
 	private int[] clusterLevels = {2,4,5,10};
 	private HashMap<String, String> clusterRelationship;
 	

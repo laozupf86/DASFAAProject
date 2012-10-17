@@ -4,8 +4,10 @@ import hcl.Cluster;
 import hcl.ClusterAnalysis;
 import hcl.DataPoint;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,37 +21,63 @@ public class BuildCluster {
 	
 	private ArrayList<DataPoint> dpoints;
 	private String poiFilePath = "";
-	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	
 	public BuildCluster(){
-		
+		readFile("points-s");
 		
 	}
 	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] numofClusters = {10,5,4,2};
+		int[] numofClusters = {500,250,150,100,50,25};
 		System.out.println("start reading");
 		BuildCluster bc = new BuildCluster();
 		System.out.println("reading finish");
 	    ClusterAnalysis HCL =new ClusterAnalysis();
 	    System.out.println("reading clustering");
+	    
 	    for (int i = 0; i < numofClusters.length; i++){
 	    	List<Cluster> clusters = HCL.startAnalysis(bc.getPoints(), numofClusters[i]); 
 		    System.out.println("clustering finish, write to file");
-		    bc.writeToFile(clusters, numofClusters[i]);
+		    bc.writeToFile(clusters, numofClusters[i], "clusters\\");
 	    }
 	    System.out.println("all done!");
 	}
 	
+	
+	private void readFile(String fileName){
+		BufferedReader reader = null;		
+		String lineWord;
+		this.dpoints = new ArrayList<DataPoint>();
+		try {
+			reader = new BufferedReader(new FileReader(clusterFilePath + fileName));
+			while ((lineWord = reader.readLine()) != null){
+				 String[] tr = lineWord.split(",");
+				 double[] p = new double[2];
+				 p[0] = Double.parseDouble(tr[1]);
+				 p[1] = Double.parseDouble(tr[2]);
+				 DataPoint point = new DataPoint(p, tr[0]);
+				 this.dpoints.add(point);
+				 
+				 
+				 
+			}
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public ArrayList<DataPoint> getPoints(){
+		
 		return this.dpoints;
 	}
 	
-	public void writeToFile(List<Cluster> clusters, int num){
+	public void writeToFile(List<Cluster> clusters, int num, String clusterFolder){
 		String foldPath = "c" + num;
 		File fold = new File(clusterFilePath + foldPath);
 		if (!fold.exists()){
