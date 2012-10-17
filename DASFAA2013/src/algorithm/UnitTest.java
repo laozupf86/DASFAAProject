@@ -25,7 +25,7 @@ public class UnitTest {
 		}
 		*/
 		
-		PQ p = new PQ();
+		/*PQ p = new PQ();
 		p.add((double) 5);
 		p.add((double) 4);
 		p.add(12.0);
@@ -35,7 +35,7 @@ public class UnitTest {
 		System.out.println(p.poll());
 		System.out.println(p.poll());
 		System.out.println(p.poll());
-		System.out.println(p.poll());
+		System.out.println(p.poll());*/
 		
 		
 	}

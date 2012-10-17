@@ -24,49 +24,7 @@ public class BuildCluster {
 	
 	
 	public BuildCluster(){
-		dpoints = new ArrayList<DataPoint>();
-		   double[] a={2,3};
-	       double[] b={2,4};
-	       double[] c={1,4};
-	       double[] d={1,3};
-	       double[] e={2,2};
-	       double[] f={3,2};
-
-	       double[] g={8,7};
-	       double[] h={8,6};
-	       double[] i={7,7};
-	       double[] j={7,6};
-	       double[] k={8,5};
-
-//	       double[] l={100,2};//¹ÂÁ¢µã
-
-
-	       double[] m={8,20};
-	       double[] n={8,19};
-	       double[] o={7,18};
-	       double[] p={7,17};
-	       double[] q={8,20};
-
-	       dpoints.add(new DataPoint(a,"a"));
-	       dpoints.add(new DataPoint(b,"b"));
-	       dpoints.add(new DataPoint(c,"c"));
-	       dpoints.add(new DataPoint(d,"d"));
-	       dpoints.add(new DataPoint(e,"e"));
-	       dpoints.add(new DataPoint(f,"f"));
-
-	       dpoints.add(new DataPoint(g,"g"));
-	       dpoints.add(new DataPoint(h,"h"));
-	       dpoints.add(new DataPoint(i,"i"));
-	       dpoints.add(new DataPoint(j,"j"));
-	       dpoints.add(new DataPoint(k,"k"));
-
-//	       dataPoints.add(new DataPoint(l,"l"));
-
-	       dpoints.add(new DataPoint(m,"m"));
-	       dpoints.add(new DataPoint(n,"n"));
-	       dpoints.add(new DataPoint(o,"o"));
-	       dpoints.add(new DataPoint(p,"p"));
-	       dpoints.add(new DataPoint(q,"q"));
+		
 		
 	}
 	
