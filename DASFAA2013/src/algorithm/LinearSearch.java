@@ -17,7 +17,8 @@ public class LinearSearch {
 	private int k;
 	private BuildIndex index;
 	private double bestSoFar = 0;
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	private int model;
 	private ArrayList<Point> refPoint;
 	
@@ -33,7 +34,23 @@ public class LinearSearch {
 		q.add(p);
 		p =  new Point("2", new double[]{116.478003964994,40.0026050122136});
 		q.add(p);
-		LinearSearch ls = new LinearSearch(q, 3, 100, 1);
+		p =  new Point("3", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("4", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("5", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("6", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("7", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("8", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("9", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		p =  new Point("10", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		LinearSearch ls = new LinearSearch(q, 10, 100, 2);
 
 	}
 	
@@ -54,7 +71,8 @@ public class LinearSearch {
 		}
 		
 		for (int i = 0; i < k; i++){
-			System.out.println(heap.poll().id);
+			PQElement r = heap.poll();
+			System.out.println(r.id + " , " + r.distance);
 		}
 		
 	}

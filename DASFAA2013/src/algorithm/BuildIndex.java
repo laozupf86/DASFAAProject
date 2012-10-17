@@ -12,7 +12,8 @@ import refPoint.Point;
 public class BuildIndex {
 	
 	private HashMap<String, Double> index;
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	public BuildIndex(ArrayList<Point> refPoint, int model, int num){
 		this.index = new HashMap<String, Double>();

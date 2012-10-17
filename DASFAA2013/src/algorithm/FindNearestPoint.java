@@ -10,8 +10,8 @@ import refPoint.Point;;
 public class FindNearestPoint {
 	
 	//double[] refPoint = {25,50,100,250,}
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	private ArrayList<Point> query;
 	private int refPointNum;
 	private ArrayList<Point> refPoint;
