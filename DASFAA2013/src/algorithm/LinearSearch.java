@@ -28,6 +28,12 @@ public class LinearSearch {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		ArrayList<Point> q = new ArrayList<Point>();
+		Point p = new Point("1", new double[]{116.427898004571,39.8975208179019});
+		q.add(p);
+		p =  new Point("2", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);
+		LinearSearch ls = new LinearSearch(q, 3, 100, 1);
 
 	}
 	
@@ -44,7 +50,11 @@ public class LinearSearch {
 		File flist = new File(clusterFilePath + "grid\\");
 		String[] list = flist.list();
 		for(String f : list){
-			
+			deepSearch(f);
+		}
+		
+		for (int i = 0; i < k; i++){
+			System.out.println(heap.poll().id);
 		}
 		
 	}
@@ -61,7 +71,15 @@ public class LinearSearch {
 		return new AggregateFunction(this.model, refDistance).getDistance();
 	}
 	
-	private String deepSearch(String name){
+	private void pushToHeap(String id, double distance){
+		PQElement element = new PQElement(id, distance);
+		heap.add(element);
+		if (heap.size() > k){
+			heap.poll();
+		}
+	}
+	
+	private void deepSearch(String name){
 		BufferedReader reader = null;
 		String lineWord;
 		String best = "";
@@ -74,8 +92,9 @@ public class LinearSearch {
 				p[1] = Double.parseDouble(tr[2]);
 				double distance = getAggDistance(p);
 				if (bestSoFar < distance){
-					bestSoFar = distance;
-					best = tr[0];
+					pushToHeap(tr[0], distance);
+					bestSoFar = heap.peek().distance;
+					//best = tr[0];
 				}
 				
 				
@@ -84,7 +103,7 @@ public class LinearSearch {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return best;
+		
 	}
 	
 	private double getAggDistance(double[] p){
