@@ -21,6 +21,7 @@ public class LinearSearch {
 	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	private int model;
 	private ArrayList<Point> refPoint;
+	int count = 0;
 	
 	/**
 	 * @param args
@@ -30,27 +31,39 @@ public class LinearSearch {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ArrayList<Point> q = new ArrayList<Point>();
-		Point p = new Point("1", new double[]{116.427898004571,39.8975208179019});
+		Point p = new Point("1", new double[]{115.57475198923,39.6350970061053});
 		q.add(p);
-		p =  new Point("2", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("2", new double[]{115.588992981429,40.632183011384});
 		q.add(p);
-		p =  new Point("3", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("3", new double[]{117.165610955059,39.6350970061053});
 		q.add(p);
-		p =  new Point("4", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("4", new double[]{117.38265201254,40.632183011384});
 		q.add(p);
-		p =  new Point("5", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("5", new double[]{116.513557038151,39.866977019899});
 		q.add(p);
-		p =  new Point("6", new double[]{116.478003964994,40.0026050122136});
+		/*p =  new Point("5", new double[]{146.478003964994,38.0026050122136});
 		q.add(p);
-		p =  new Point("7", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("6", new double[]{106.478003964994,33.0026050122136});
 		q.add(p);
-		p =  new Point("8", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("7", new double[]{156.478003964994,40.0026050122136});
 		q.add(p);
-		p =  new Point("9", new double[]{116.478003964994,40.0026050122136});
+		p =  new Point("8", new double[]{166.478003964994,41.0026050122136});
+		q.add(p);
+		p =  new Point("9", new double[]{156.478003964994,42.0026050122136});
 		q.add(p);
 		p =  new Point("10", new double[]{116.478003964994,40.0026050122136});
+		q.add(p);*/
+		LinearSearch ls = new LinearSearch(q, 10, 500, 2);
+		q = new ArrayList<Point>();
+		p = new Point("1", new double[]{115.57475198923,39.6350970061053});
 		q.add(p);
-		LinearSearch ls = new LinearSearch(q, 10, 100, 2);
+		p =  new Point("2", new double[]{115.57475198923,39.6350970061053});
+		q.add(p);
+		p =  new Point("3", new double[]{115.57475198923,39.6350970061053});
+		q.add(p);
+		p =  new Point("4", new double[]{115.57475198923,39.6350970061053});
+		q.add(p);
+		ls = new LinearSearch(q, 10, 1000, 1);
 
 	}
 	
@@ -66,14 +79,23 @@ public class LinearSearch {
 		
 		File flist = new File(clusterFilePath + "grid\\");
 		String[] list = flist.list();
-		for(String f : list){
-			deepSearch(f);
+		
+		for(String f : list){ 
+			//System.out.println("current grid is " + f);
+			if (getAggDistance(f) > bestSoFar){
+				deepSearch(f);
+			}else{
+				//deepSearch(f);
+			}
+			
 		}
 		
 		for (int i = 0; i < k; i++){
 			PQElement r = heap.poll();
 			System.out.println(r.id + " , " + r.distance);
 		}
+		
+		System.out.println("IO is " + count);
 		
 	}
 	
@@ -100,10 +122,11 @@ public class LinearSearch {
 	private void deepSearch(String name){
 		BufferedReader reader = null;
 		String lineWord;
-		String best = "";
+		//String best = "";
 		try {
 			reader = new BufferedReader(new FileReader(clusterFilePath + "grid\\" + name));
 			while ((lineWord = reader.readLine()) != null){
+				count++;
 				String[] tr = lineWord.split(",");
 				double[] p = new double[2];
 				p[0] = Double.parseDouble(tr[1]);
