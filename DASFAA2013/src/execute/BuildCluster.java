@@ -23,10 +23,11 @@ public class BuildCluster {
 	private String poiFilePath = "";
 	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
 	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	private int num;
 	
 	
-	public BuildCluster(){
-		readFile("points-s");
+	public BuildCluster(String name){
+		this.num = (int) (readFile(name)/10000);
 		
 	}
 	
@@ -35,25 +36,32 @@ public class BuildCluster {
 		// TODO Auto-generated method stub
 		int[] numofClusters = {500,250,150,100,50,25};
 		System.out.println("start reading");
-		BuildCluster bc = new BuildCluster();
+		BuildCluster bc;
 		System.out.println("reading finish");
 	    ClusterAnalysis HCL =new ClusterAnalysis();
 	    System.out.println("reading clustering");
+	    String filePath = "";
+	    File f = new File(filePath);
+	    String[] list = f.list();
 	    
-	    for (int i = 0; i < numofClusters.length; i++){
-	    	List<Cluster> clusters = HCL.startAnalysis(bc.getPoints(), numofClusters[i]); 
+	    for (String file : list){
+	    	bc = new BuildCluster(filePath);
+	    	List<Cluster> clusters = HCL.startAnalysis(bc.getPoints(), bc.num); 
 		    System.out.println("clustering finish, write to file");
-		    bc.writeToFile(clusters, numofClusters[i], "clusters\\");
+		    bc.writeToFile(clusters, file, "clusters\\");
 	    }
 	    System.out.println("all done!");
 	}
 	
 	
-	private void readFile(String fileName){
+	private long readFile(String fileName){
 		BufferedReader reader = null;		
 		String lineWord;
 		this.dpoints = new ArrayList<DataPoint>();
+		long l = 0;
 		try {
+			File f = new File(clusterFilePath + fileName);
+			l = f.length();
 			reader = new BufferedReader(new FileReader(clusterFilePath + fileName));
 			while ((lineWord = reader.readLine()) != null){
 				 String[] tr = lineWord.split(",");
@@ -70,6 +78,7 @@ public class BuildCluster {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return l;
 	}
 	
 	public ArrayList<DataPoint> getPoints(){
@@ -77,7 +86,7 @@ public class BuildCluster {
 		return this.dpoints;
 	}
 	
-	public void writeToFile(List<Cluster> clusters, int num, String clusterFolder){
+	public void writeToFile(List<Cluster> clusters, String file, String clusterFolder){
 		String foldPath = "c" + num;
 		File fold = new File(clusterFilePath + foldPath);
 		if (!fold.exists()){

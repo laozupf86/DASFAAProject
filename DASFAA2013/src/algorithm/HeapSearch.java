@@ -10,6 +10,7 @@ import refPoint.Point;
 
 public class HeapSearch {
 	
+	private PQ pq;
 	private RPQ heap;
 	private ArrayList<Point> query;
 	private int k;
