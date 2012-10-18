@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ClusterAnalysis {
 	
-	private int c = 0;
+	private int c,d = 0;
 	
 	public List<Cluster> startAnalysis(List<DataPoint> dataPoints,int ClusterNum){
 	      List<Cluster> finalClusters=new ArrayList<Cluster>();
@@ -16,8 +16,11 @@ public class ClusterAnalysis {
 	          double min=Double.MAX_VALUE;
 	          int mergeIndexA=0;
 	          int mergeIndexB=0;
+	          System.out.println("current cluster size is " + finalClusters.size());
 	          for(int i=0;i<finalClusters.size();i++){
+	        	  
 	              for(int j=0;j<finalClusters.size();j++){
+	            	  
 	                  if(i!=j){
 	                      Cluster clusterA=finalClusters.get(i);
 	                      Cluster clusterB=finalClusters.get(j);
@@ -87,6 +90,7 @@ public class ClusterAnalysis {
 
 	           tempDataPoint.setCluster(tempCluster);
 	           originalClusters.add(tempCluster);
+	           //System.out.println("cluster id  is " + i);
 	       }
 
 	       return originalClusters;
