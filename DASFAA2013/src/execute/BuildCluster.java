@@ -40,7 +40,7 @@ public class BuildCluster {
 		System.out.println("reading finish");
 	    ClusterAnalysis HCL =new ClusterAnalysis();
 	    System.out.println("reading clustering");
-	    String filePath = "";
+	    String filePath = "gridD\\g1\\";
 	    File f = new File(filePath);
 	    String[] list = f.list();
 	    
@@ -87,7 +87,7 @@ public class BuildCluster {
 	}
 	
 	public void writeToFile(List<Cluster> clusters, String file, String clusterFolder){
-		String foldPath = "c" + num;
+		String foldPath = "C@" + num;
 		File fold = new File(clusterFilePath + foldPath);
 		if (!fold.exists()){
 			fold.mkdir();
