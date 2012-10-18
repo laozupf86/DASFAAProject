@@ -34,7 +34,7 @@ public class BuildCluster {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] numofClusters = {500,250,150,100,50,25};
+		//int[] numofClusters = {500,250,150,100,50,25};
 		System.out.println("start reading");
 		BuildCluster bc;
 		System.out.println("reading finish");
