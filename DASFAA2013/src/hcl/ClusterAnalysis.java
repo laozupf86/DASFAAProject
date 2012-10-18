@@ -12,6 +12,7 @@ public class ClusterAnalysis {
 	     
 	      List<Cluster> originalClusters=initialCluster(dataPoints);
 	      finalClusters=originalClusters;
+	      System.out.println("start cluster, final size is " + ClusterNum);
 	      while(finalClusters.size()>ClusterNum){
 	          double min=Double.MAX_VALUE;
 	          int mergeIndexA=0;
@@ -68,8 +69,8 @@ public class ClusterAnalysis {
 	            clusterA.setDataPoints(dpA);
 
 	            // List<Cluster> clustersÖÐÒÆ³ýcluster[mergeIndexB]
-	            c++;
-	            System.out.println("cluster id " + mergeIndexB + " is merged, count is " + c);
+	            //c++;
+	            //System.out.println("cluster id " + mergeIndexB + " is merged, count is " + c);
 	            clusters.remove(mergeIndexB);
 	        }
 

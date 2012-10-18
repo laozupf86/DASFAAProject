@@ -21,13 +21,19 @@ public class BuildCluster {
 	
 	private ArrayList<DataPoint> dpoints;
 	private String poiFilePath = "";
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private static String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	private int num;
+	private long doit;
 	
 	
 	public BuildCluster(String name){
-		this.num = (int) (readFile(name)/10000);
+		this.doit = readFile(name);
+		
+		this.num = (int) (this.doit/10000);
+		if (this.num == 0){
+			this.num = 1;
+		}
 		
 	}
 	
@@ -40,15 +46,15 @@ public class BuildCluster {
 		System.out.println("reading finish");
 	    ClusterAnalysis HCL =new ClusterAnalysis();
 	    System.out.println("reading clustering");
-	    String filePath = "gridD\\g1\\";
-	    File f = new File(filePath);
+	    String filePath = "gridD\\g7\\";
+	    File f = new File(clusterFilePath + filePath);
 	    String[] list = f.list();
 	    
 	    for (String file : list){
-	    	bc = new BuildCluster(filePath);
-	    	List<Cluster> clusters = HCL.startAnalysis(bc.getPoints(), bc.num); 
+	    	bc = new BuildCluster(filePath + file);
+	    	List<Cluster> clusters = HCL.startAnalysis(bc.getPoints(), bc.num + 1); 
 		    System.out.println("clustering finish, write to file");
-		    bc.writeToFile(clusters, file, "clusters\\");
+		    bc.writeToFile(clusters, "L1", file);
 	    }
 	    System.out.println("all done!");
 	}
@@ -86,18 +92,18 @@ public class BuildCluster {
 		return this.dpoints;
 	}
 	
-	public void writeToFile(List<Cluster> clusters, String file, String clusterFolder){
-		String foldPath = "C@" + num;
-		File fold = new File(clusterFilePath + foldPath);
+	public void writeToFile(List<Cluster> clusters, String file, String clusterName){
+		String foldPath = "C@" + file;
+		File fold = new File(clusterFilePath + "cluster\\" +foldPath);
 		if (!fold.exists()){
 			fold.mkdir();
 		}
 		
 		
 		for(Cluster cl:clusters){
-			String filename = "l-" + num + "_c_" + cl.getClusterName();
+			String filename = "l-" + num + "_c_" + cl.getClusterName()+clusterName;
 			try {
-				FileWriter fw = new FileWriter(clusterFilePath + foldPath + "\\" + filename);
+				FileWriter fw = new FileWriter(clusterFilePath + "cluster\\" + foldPath + "\\" + filename);
 				BufferedWriter bw = new BufferedWriter(fw);
 				List<DataPoint> tempDps = cl.getDataPoints();
 				for(DataPoint tempdp : tempDps){

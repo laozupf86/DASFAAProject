@@ -12,7 +12,8 @@ import java.util.HashMap;
 public class SplitPOI {
 	
 	
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	private double maxOfX = 117.5;
 	private double maxOfY = 40.98;
 	private double minOfX = 115.42;
@@ -95,7 +96,7 @@ public class SplitPOI {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		SplitPOI sp = new SplitPOI(10);
+		SplitPOI sp = new SplitPOI(30);
 		sp.readFile("points");
 		sp.wirteFile("grid\\");
 	}
