@@ -46,7 +46,7 @@ public class BuildCluster {
 		System.out.println("reading finish");
 	    ClusterAnalysis HCL =new ClusterAnalysis();
 	    System.out.println("reading clustering");
-	    String filePath = "gridD\\g7\\";
+	    String filePath = "gridD\\g1\\";
 	    File f = new File(clusterFilePath + filePath);
 	    String[] list = f.list();
 	    

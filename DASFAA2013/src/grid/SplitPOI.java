@@ -96,9 +96,9 @@ public class SplitPOI {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		SplitPOI sp = new SplitPOI(30);
+		SplitPOI sp = new SplitPOI(50);
 		sp.readFile("points");
-		sp.wirteFile("grid\\");
+		sp.wirteFile("HCL\\L6\\");
 	}
 
 }
