@@ -8,31 +8,31 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CalculateDistance {
-	
-	
+public class CalculateDistanceForHCL {
 	private static String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
 	//private static String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	
-	public CalculateDistance(){
+	public CalculateDistanceForHCL(){
 		
 	}
 	
 	
 	public static void main(String[] args) {
 		File f = new File(clusterFilePath + "refPoints\\");
-		File pf = new File(clusterFilePath + "grid\\");
+		//File pf = new File(clusterFilePath + "grid\\");
 		String[] list = f.list();
-		
-		String[] pointList = pf.list();
-		CalculateDistance cd; 
-		for (String s : list){
-			
-			cd = new CalculateDistance();
-			cd.readFile(s, pointList);
-			
-			
+		for (int i = 1; i < 7; i++){
+			File pf = new File(clusterFilePath + "HCL\\L" + i);
+			String[] pointList = pf.list();
+			CalculateDistanceForHCL cd; 
+			for (String s : list){
+				
+				cd = new CalculateDistanceForHCL();
+				cd.readFile(s, pointList, i);
+				
+				
+			}
 		}
 		
 		
@@ -50,7 +50,7 @@ public class CalculateDistance {
 		
 	}
 	
-	public void readFile(String refPointFileName, String[] pointFileName){
+	public void readFile(String refPointFileName, String[] pointFileName, int level){
 		BufferedReader poiReader = null;
 		BufferedReader refPointReader = null;
 		String lineWord;
@@ -76,11 +76,12 @@ public class CalculateDistance {
 				 
 			}
 			FileWriter outfile;
-			outfile = new FileWriter(clusterFilePath + "griddistance\\" + refPointFileName);
+			outfile = new FileWriter(clusterFilePath + "HCLdistance\\" + refPointFileName, true);
 			BufferedWriter bw = new BufferedWriter(outfile);
 			
 			for (String name : pointFileName){
-				poiReader = new BufferedReader(new FileReader(clusterFilePath + "grid\\" + name));
+				//poiReader = new BufferedReader(new FileReader(clusterFilePath + "grid\\" + name));
+				poiReader = new BufferedReader(new FileReader(clusterFilePath + "HCL\\L" + level + "\\" + name));
 				tempPoint = new ArrayList<Point>();
 				while((lineWord = poiReader.readLine()) != null){
 					 String[] p = lineWord.split(",");
@@ -123,5 +124,4 @@ public class CalculateDistance {
 		}
 		
 	}
-
 }

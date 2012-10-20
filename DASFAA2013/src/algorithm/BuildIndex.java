@@ -12,15 +12,16 @@ import refPoint.Point;
 public class BuildIndex {
 	
 	private HashMap<String, Double> index;
-	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	private PQ heap;
+	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	public BuildIndex(ArrayList<Point> refPoint, int model, int num){
 		this.index = new HashMap<String, Double>();
 		if (model == 1){
 			buildForGrid(refPoint, num);
 		}else if (model == 2){
-			
+			buildForHCL(refPoint, num);
 		}else{
 			
 		}
@@ -58,6 +59,7 @@ public class BuildIndex {
 		BufferedReader reader = null;
 		String lineWord;
 		HashMap<String, Integer> rp = new HashMap<String, Integer>();
+		heap = new PQ();
 		for (Point tp : refPoint){
 			rp.put(tp.id, 1);
 		}
@@ -67,7 +69,9 @@ public class BuildIndex {
 				 String[] tr = lineWord.split(",");
 				 if (rp.containsKey(tr[0])){
 					 index.put(tr[0] + "," + tr[1], Double.parseDouble(tr[2]));
+					 insertElement(tr[0]+","+tr[1], Double.parseDouble(tr[2]));
 				 }
+				 
 				 
 			}
 		} catch (NumberFormatException | IOException e) {
@@ -83,6 +87,20 @@ public class BuildIndex {
 			System.out.println("invailed key");
 			return -1.0;
 		}
+	}
+	
+	public double getDistance(){
+		return this.heap.poll().distance;
+	}
+	
+	public void insertElement(String id){
+		PQElement e = new PQElement(id, getDistance(id));
+		this.heap.add(e);
+	}
+	
+	public void insertElement(String id, double distance){
+		PQElement e = new PQElement(id, distance);
+		this.heap.add(e);
 	}
 	
 

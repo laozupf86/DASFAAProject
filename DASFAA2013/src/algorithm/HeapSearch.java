@@ -135,6 +135,8 @@ public class HeapSearch {
 					pushToHeap(tr[0], distance);
 					bestSoFar = heap.peek().distance;
 					//best = tr[0];
+				}else{
+					break;
 				}
 				
 				

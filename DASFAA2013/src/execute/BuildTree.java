@@ -12,8 +12,8 @@ import java.util.HashMap;
 
 public class BuildTree {
 	
-	private String filePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\clusters\\";
-	private int[] clusterLevels = {2,4,5,10};
+	private String filePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\HCL\\";
+	private int[] clusterLevels = {1,2,3,4,5,6};
 	private HashMap<String, String> clusterRelationship;
 	
 	
@@ -22,8 +22,8 @@ public class BuildTree {
 	public BuildTree(){
 		for (int i = 0; i < clusterLevels.length -1; i++){
 			clusterRelationship = new HashMap<String, String>();
-			readCluster("c"+clusterLevels[i]);
-			writeTree("", "c"+clusterLevels[i+1]);
+			readCluster("L"+clusterLevels[i]);
+			writeTree("", "L"+clusterLevels[i+1]);
 		}
 		
 		
