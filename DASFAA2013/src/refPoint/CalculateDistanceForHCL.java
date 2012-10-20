@@ -107,7 +107,7 @@ public class CalculateDistanceForHCL {
 							 max = distance;
 						 }
 					 }				 
-					 bw.write(point.id + "," + name + "," + max);
+					 bw.write(point.id + ",L" + level + "\\" + name + "," + max);
 					 bw.newLine(); 
 				}
 				
