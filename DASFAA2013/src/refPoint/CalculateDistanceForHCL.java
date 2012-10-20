@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CalculateDistanceForHCL {
-	private static String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	//private static String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	//private static String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private static String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	
 	
 	public CalculateDistanceForHCL(){
