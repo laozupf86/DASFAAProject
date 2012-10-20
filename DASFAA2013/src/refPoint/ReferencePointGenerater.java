@@ -11,8 +11,8 @@ public class ReferencePointGenerater {
 	private double maxOfY = 40.98;
 	private double minOfX = 115.42;
 	private double minOfY = 39.46;
-	private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
-	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
+	//private String clusterFilePath = "C:\\Users\\WANG Haozhou\\Documents\\myUQ\\expData\\Dasfaa\\";
+	private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	//private String clusterFilePath = "C:\\myUQ\\expData\\Dasfaa\\";
 	private int numOfRefPoint;
 	private double xRange, yRange;
